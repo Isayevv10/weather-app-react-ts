@@ -8,10 +8,11 @@ import { useAppDispatch } from "./redux/store/store";
 import { getWeather } from "./redux/reducer/queryReducer";
 import useDebounce from "./hooks/useDebounce";
 import axios from "axios";
+import { baseUrl } from "./constants/baseUrl";
 
 const App: FC = () => {
   const dispatch = useAppDispatch();
-  let [searchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const debouncedValue = useDebounce<string | null>(
     searchParams.get("q"),
     1200
@@ -19,17 +20,15 @@ const App: FC = () => {
 
   const fetchData = async () => {
     if (searchParams.has("q")) {
-      let { data } = await axios.get(
-        `http://api.weatherapi.com/v1/forecast.json?key=${
-          import.meta.env.VITE_SOME_KEY
-        }&q=${searchParams.get("q")}&days=7`
+      const { data } = await axios.get(
+        `${baseUrl}${import.meta.env.VITE_SOME_KEY}&q=${searchParams.get(
+          "q"
+        )}&days=7`
       );
       dispatch(getWeather(data));
     } else {
-      let { data } = await axios.get(
-        `http://api.weatherapi.com/v1/forecast.json?key=${
-          import.meta.env.VITE_SOME_KEY
-        }&q=Baku&days=7`
+      const { data } = await axios.get(
+        `${baseUrl}${import.meta.env.VITE_SOME_KEY}&q=Baku&days=7`
       );
       dispatch(getWeather(data));
     }
