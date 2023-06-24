@@ -15,6 +15,7 @@ const Today: FC = () => {
         color: "#fff",
         margin: "auto",
       }}
+      data-testid="today-component"
     >
       <Box
         sx={{

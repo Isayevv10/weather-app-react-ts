@@ -46,6 +46,7 @@ const Search: FC = () => {
               </InputAdornment>
             ),
           }}
+          inputProps={{ "data-testid": "search-input" }}
         />
       </FormControl>
     </Box>

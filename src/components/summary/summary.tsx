@@ -10,6 +10,7 @@ import { month, d } from "../../constants/months";
 
 const Summary: FC = () => {
   const showData = useAppSelector((state) => state.getDatas);
+
   return (
     <Box
       sx={{
@@ -22,6 +23,7 @@ const Summary: FC = () => {
         borderBottomRightRadius: "8px",
         padding: "0 16px",
       }}
+      data-testid="summary-component"
     >
       <Box
         sx={{

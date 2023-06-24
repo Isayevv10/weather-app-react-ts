@@ -21,12 +21,13 @@ const Temp: FC = () => {
         borderTopLeftRadius: "8px",
         borderTopRightRadius: "8px",
       }}
+      data-testid="temp-component"
     >
       <img src={forecast} alt="forecast" width="120px" height="120px" />
       <Box sx={{ fontSize: "45px" }}>
         {Math.round(showData?.current?.feelslike_c)}°
       </Box>
-      <Box sx={{ marginTop: "8px", fontSize: "25px" }}>
+      <Box data-testid="weather" sx={{ marginTop: "8px", fontSize: "25px" }}>
         {showData?.location?.name}
       </Box>
       <Box sx={{ margin: "8px 0" }}>
